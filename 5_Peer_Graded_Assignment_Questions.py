@@ -75,8 +75,7 @@ app.layout = html.Div(children=[
                                 # TASK1: Add title to the dashboard
                                 html.H1('US Domestic Airline Flights Performance.',
                                          style={'textAlign': 'center',
-                                                'color': '#503D36',
-                                                 'font-size': 24}),
+                                         'color': '#503D36', 'font-size': 24}),
 
                                  # Enter your code below. Make sure you have correct formatting.
 
