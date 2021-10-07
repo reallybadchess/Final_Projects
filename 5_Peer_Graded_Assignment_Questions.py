@@ -194,11 +194,11 @@ def get_graph(chart, year, children1, children2, children3, children4, children5
 
 
             # REVIEW6: Return dcc.Graph component to the empty division
-            return [[],dcc.Graph(figure=tree_fig),
-                    [],dcc.Graph(figure=pie_fig),
-                    [],dcc.Graph(figure=map_fig),
-                    [],dcc.Graph(figure=bar_fig),
-                    [],dcc.Graph(figure=line_fig)
+            return [dcc.Graph(figure=tree_fig),
+                    dcc.Graph(figure=pie_fig),
+                    dcc.Graph(figure=map_fig),
+                    dcc.Graph(figure=bar_fig),
+                    dcc.Graph(figure=line_fig)
                    ]
         else:
             # REVIEW7: This covers chart type 2 and we have completed this exercise under Flight Delay Time Statistics Dashboard section
@@ -212,11 +212,11 @@ def get_graph(chart, year, children1, children2, children3, children4, children5
             sec_fig = px.line(avg_sec, x='Month', y='SecurityDelay', color='Reporting_Airline', title='Average security delay time (minutes) by airline')
             late_fig = px.line(avg_late, x='Month', y='LateAircraftDelay', color='Reporting_Airline', title='Average late aircraft delay time (minutes) by airline')
 
-            return[[],dcc.Graph(figure=carrier_fig),
-                   [],dcc.Graph(figure=weather_fig),
-                   [],dcc.Graph(figure=nas_fig),
-                   [],dcc.Graph(figure=sec_fig),
-                   [],dcc.Graph(figure=late_fig)
+            return[ dcc.Graph(figure=carrier_fig),
+                    dcc.Graph(figure=weather_fig),
+                    dcc.Graph(figure=nas_fig),
+                    dcc.Graph(figure=sec_fig),
+                    dcc.Graph(figure=late_fig)
                    ]
 
 
