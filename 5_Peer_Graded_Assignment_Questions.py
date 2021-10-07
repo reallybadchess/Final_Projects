@@ -16,8 +16,8 @@ app = dash.Dash(__name__)
 app.config.suppress_callback_exceptions = True
 
 # Read the airline data into pandas dataframe
-airline_data =  pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/airline_data.csv',
-                            encoding = "ISO-8859-1",
+airline_data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/airline_data.csv',
+                            encoding= "ISO-8859-1",
                             dtype={'Div1Airport': str, 'Div1TailNum': str,
                                    'Div2Airport': str, 'Div2TailNum': str})
 
@@ -27,7 +27,7 @@ year_list = [i for i in range(2005, 2021, 1)]
 
 """Compute graph data for creating yearly airline performance report 
 
-Function that takes airline data as input and create 5 dataframes based on the grouping condition to be used for plottling charts and grphs.
+Function that takes airline data as input and create 5 dataframes based on the grouping condition to be used for plotting charts and graphs.
 
 Argument:
 
@@ -112,7 +112,7 @@ html.Div([
                                             ]
                                         ),
                                         dcc.Dropdown(id='input-year',
-                                                     # Update dropdown values using list comphrehension
+                                                     # Update dropdown values using list comprehension
                                                      options=[{'label': i, 'value': i} for i in year_list],
                                                      placeholder="Select a year",
                                                      style={'width':'80%', 'padding':'3px', 'font-size': '20px', 'text-align-last' : 'center'}),
@@ -129,7 +129,7 @@ html.Div([
                                         html.Div([ ], id='plot3')
                                 ], style={'display': 'flex'}),
 
-                                # TASK3: Add a division with two empty divisions inside. See above disvision for example.
+                                # TASK3: Add a division with two empty divisions inside. See above division for example.
                                 # Enter your code below. Make sure you have correct formatting.
                                html.Div([
                                         html.Div([ ], id='plot4'),
@@ -138,7 +138,7 @@ html.Div([
                                 ])
 
 # Callback function definition
-# TASK4: Add 5 ouput components
+# TASK4: Add 5 output components
 # Enter your code below. Make sure you have correct formatting.
 @app.callback(  [Output(component_id='plot1', component_property='children'),
                  Output(component_id='plot2', component_property='children'),
@@ -207,18 +207,17 @@ def get_graph(chart, year, children1, children2, children3, children4, children5
             avg_car, avg_weather, avg_NAS, avg_sec, avg_late = compute_data_choice_2(df)
 
             # Create graph
-            carrier_fig = px.line(avg_car, x='Month', y='CarrierDelay', color='Reporting_Airline', title='Average carrrier delay time (minutes) by airline')
+            carrier_fig = px.line(avg_car, x='Month', y='CarrierDelay', color='Reporting_Airline', title='Average carrier delay time (minutes) by airline')
             weather_fig = px.line(avg_weather, x='Month', y='WeatherDelay', color='Reporting_Airline', title='Average weather delay time (minutes) by airline')
             nas_fig = px.line(avg_NAS, x='Month', y='NASDelay', color='Reporting_Airline', title='Average NAS delay time (minutes) by airline')
             sec_fig = px.line(avg_sec, x='Month', y='SecurityDelay', color='Reporting_Airline', title='Average security delay time (minutes) by airline')
             late_fig = px.line(avg_late, x='Month', y='LateAircraftDelay', color='Reporting_Airline', title='Average late aircraft delay time (minutes) by airline')
 
-            return[ dcc.Graph(figure=carrier_fig),
-                    dcc.Graph(figure=weather_fig),
-                    dcc.Graph(figure=nas_fig),
-                    dcc.Graph(figure=sec_fig),
-                    dcc.Graph(figure=late_fig)
-                   ]
+            return[dcc.Graph(figure=carrier_fig),
+                   dcc.Graph(figure=weather_fig),
+                   dcc.Graph(figure=nas_fig),
+                   dcc.Graph(figure=sec_fig),
+                   dcc.Graph(figure=late_fig)]
 
 
 # Run the app
